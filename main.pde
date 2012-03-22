@@ -1,18 +1,32 @@
-#include "PID_v1.h"
 
-void kill(void);
+//--------------Arduino Library Class Declarations-------------------
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+//-------------------------------------------------------------------
 
-int fanPin = 5;  // motor connected to pin ~D5
-int IRpin = 0;   // IR Sensor connected to pin A0
+
+//-------------------Arduino I/O Pin Declarations--------------------
+unsigned char fanPin = 5;  // motor connected to pin ~D5
+unsigned char IRpin = 0;   // IR Sensor connected to pin A0
+unsigned char potentiometerPin = 2;	//potentiometer pin
+//-------------------------------------------------------------------
+
+//--------------------PID Control Values-----------------------------
+double kp, kd, ki;
+int setpoint;
+//-------------------------------------------------------------------
+
 
 int IRread = 0;  // IR Sensor range value
 int mappedIRread = 0;  // remapped IR Sensor range value
 
+
+// Setup Functions
 void setup() { 
 	Serial.begin(9600);
-
+	startLCD();
 } 
 
+// The Main Function
 void loop() { 
 	mappedIRread = map(analogRead(IRpin), 40, 255, 0, 55);	//get the IR sensor value, remap it to useful range
 	
@@ -21,18 +35,5 @@ void loop() {
 	analogWrite(fanPin,Output);	// run the fan
 	Serial.println(Output);		// print the output to the serial
 	
-	kill();  // allow a kill command
-}
-
-
-
-
-//---------------------------------------------//
-//------------------FUNCTIONS------------------//
-//---------------------------------------------//
-
-void kill() {
-  if( Serial.read() == 's') {
-    while(1);
-  }
+	kill();  // do we stop?
 }
