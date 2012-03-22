@@ -5,7 +5,7 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 
 //-------------------Arduino I/O Pin Declarations--------------------
-unsigned char fanPin = 5;  // motor connected to pin ~D5
+unsigned char motorPin = 5;  // motor connected to pin ~D5
 unsigned char IRpin = 0;   // IR Sensor connected to pin A0
 unsigned char potentiometerPin = 2;	//potentiometer pin
 //-------------------------------------------------------------------
