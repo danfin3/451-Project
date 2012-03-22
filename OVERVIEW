@@ -15,8 +15,8 @@ Requirements Form
 	Purpose: Levitate and hold ball at a designated height
 	Inputs: Requested position from Potentiometer
 	Outputs: Ball at requested height, LCD indicator of height
-	Functions: Moves ball to requested height, LCD displays height in 		decimal
-	Performance: Should move to desired height within 2 seconds and  		stabilize with <1cm error within 1 second
+	Functions: Moves ball to requested height, LCD displays height in decimal
+	Performance: Should move to desired height within 2 seconds and stabilize with <1cm error within 1 second
 	Manufacturing Cost: Student Discount of Free.
 	Power: 
 	Size/Weight: machine provided
