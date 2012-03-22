@@ -1,1 +1,22 @@
 Provide a high level design of your course project by breaking the problem into smaller modules, objects or components.  Make proper assumptions where appropriate.  Provide a requirements form and graphical view of different components in the design.
+
+Temperature Controller:
+	PID Controller:
+	PWM Controller:
+		Fan Motor Interface
+	User Interface:
+		Potentiometer Input
+		LCD Display of position
+	IR Sensor:
+
+
+Requirements Form
+	Name: Ball Levitation System
+	Purpose: Levitate and hold ball at a designated height
+	Inputs: Requested position from Potentiometer
+	Outputs: Ball at requested height, LCD indicator of height
+	Functions: Moves ball to requested height, LCD displays height in 		decimal
+	Performance: Should move to desired height within 2 seconds and  		stabilize with <1cm error within 1 second
+	Manufacturing Cost: Student Discount of Free.
+	Power: 
+	Size/Weight: machine provided
