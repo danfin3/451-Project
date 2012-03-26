@@ -1,4 +1,7 @@
 
+#define epsilon 0.01
+#define dt 0.01	//100ms loop time
+
 //--------------Arduino Library Class Declarations-------------------
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 //-------------------------------------------------------------------
@@ -15,9 +18,9 @@ double kp, kd, ki;
 int setpoint;
 //-------------------------------------------------------------------
 
-
-int IRread = 0;  // IR Sensor range value
-int mappedIRread = 0;  // remapped IR Sensor range value
+//--------------------------Variables--------------------------------
+int ballPosition;
+//-------------------------------------------------------------------
 
 
 // Setup Functions
@@ -28,12 +31,11 @@ void setup() {
 
 // The Main Function
 void loop() { 
-	mappedIRread = map(analogRead(IRpin), 40, 255, 0, 55);	//get the IR sensor value, remap it to useful range
+	setpoint = getPotValue(potentiometerPin);
+	ballPosition = getBallPosition(IRpin);
 	
-	//Serial.println(mappedIRread);	// show the mapped value on the serial port
-
-	analogWrite(fanPin,Output);	// run the fan
-	Serial.println(Output);		// print the output to the serial
+	gain = PID(setpoint, ballPosition);
 	
+	pwmOut(dutyCycle, frequency);	// run the fan
 	kill();  // do we stop?
 }
