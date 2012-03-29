@@ -30,11 +30,16 @@ void setup() {
 } 
 
 // The Main Function
-void loop() { 
-	setpoint = getPotValue(potentiometerPin);
-	ballPosition = getBallPosition(IRpin);
+void loop() {
+
+	setpoint = getPotValue(potentiometerPin);	//get the desired position of the ball
+	lcd.print("Desired Position: ");
+	lcd.println(setpoint);
+	ballPosition = getBallPosition(IRpin);		//get the actual position of the ball
+	lcd.print("Current Position: ");
+	lcd.println(ballPosition);
 	
-	gain = PID(setpoint, ballPosition);
+	gain = PID(setpoint, ballPosition);			//send the desired and actual positions to the PID controller
 	
 	pwmOut(dutyCycle, frequency);	// run the fan
 	kill();  // do we stop?
